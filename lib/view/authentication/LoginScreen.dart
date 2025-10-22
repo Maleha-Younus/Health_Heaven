@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:healthy_heaven/view/authentication/ForgotPassword.dart';
 import 'package:healthy_heaven/view/authentication/SignupScreen.dart';
 import 'package:healthy_heaven/view/widgets/Ui_Button.dart';
+import 'package:healthy_heaven/view/widgets/bottom_navbar.dart';
 import 'package:healthy_heaven/view/widgets/custom_textfields.dart';
 
 /*
@@ -171,12 +172,13 @@ class _LoginScreenState extends State<LoginScreen> {
                             //  DRY principle: CustomSolidButton reused across app
                             Ui_Button(
                               tap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => SignUpScreen(),
-                                  ),
-                                );
+                                 Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) =>
+                                  const NavBarScreen(initialIndex: 0),
+                            ),
+                          );
                               },
                               text: "Login",
                             ),
