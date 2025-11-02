@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healthy_heaven/view/Home/Meal.dart';
+import 'package:healthy_heaven/view/Home/Analyze.dart';
 import 'package:healthy_heaven/view/Home/drawer.dart';
 import 'package:healthy_heaven/view/Home/home.dart';
+import 'package:healthy_heaven/view/Home/myProfile.dart';
 import 'package:healthy_heaven/view_model/Nav_barController.dart';
 import 'package:provider/provider.dart';
 
@@ -31,13 +32,13 @@ class _NavBarScreenState extends State<NavBarScreen> {
 
     final List<NavItem> navItems = [
       NavItem(icon: "assets/images/home.png", label: "Home", index: 0),
-      NavItem(icon: "assets/images/Group 11.png", label: "Meal", index: 1),
       NavItem(
-        icon: "assets/images/Message circle.png",
-        label: "Message",
-        index: 2,
+        icon: "assets/images/Group 11 (1).png",
+        label: "Analyze",
+        index: 1,
       ),
-      NavItem(icon: "assets/images/Icon (1).png", label: "Profile", index: 3),
+
+      NavItem(icon: "assets/images/Icon (1).png", label: "Profile", index: 2),
     ];
 
     return Scaffold(
@@ -45,10 +46,10 @@ class _NavBarScreenState extends State<NavBarScreen> {
       drawer: DrawerScreen(),
 
       bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20.r),
-          topRight: Radius.circular(20.r),
-        ),
+        // borderRadius: BorderRadius.only(
+        //   topLeft: Radius.circular(20.r),
+        //   topRight: Radius.circular(20.r),
+        // ),
         child: Container(
           decoration: BoxDecoration(
             color: const Color(0xffD2FF96),
@@ -60,7 +61,7 @@ class _NavBarScreenState extends State<NavBarScreen> {
               ),
             ],
           ),
-          padding: EdgeInsets.symmetric(vertical: 8.h),
+          padding: EdgeInsets.symmetric(vertical: 5.h),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: navItems
@@ -80,6 +81,9 @@ class _NavBarScreenState extends State<NavBarScreen> {
         return const HomeScreen();
       case 1:
         return const MealScreen();
+
+      case 2:
+        return const MyProfile();
       default:
         return const HomeScreen();
     }

@@ -60,7 +60,18 @@ class DrawerScreen extends StatelessWidget {
                       );
                     },
                   ),
-                  DrawerItem(icon: Icons.person, text: "Profile"),
+                  DrawerItem(
+                    icon: Icons.person,
+                    text: "Profile",
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const NavBarScreen(initialIndex: 2),
+                        ),
+                      );
+                    },
+                  ),
 
                   DrawerItem(
                     icon: Icons.share_outlined,

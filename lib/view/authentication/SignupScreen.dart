@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthy_heaven/view/authentication/createProfile.dart';
 import 'package:healthy_heaven/view/widgets/Ui_Button.dart';
 import 'package:healthy_heaven/view/widgets/custom_textfields.dart';
 
@@ -100,7 +101,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
 
                             15.verticalSpace,
-                            Ui_Button(tap: () {}, text: "Sign Up"),
+                            Ui_Button(tap: () {
+                              Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CreateProfile(),
+                          ),
+                        );
+                            }, text: "Sign Up"),
 
                             15.verticalSpace,
                           ],

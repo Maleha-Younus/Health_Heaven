@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy_heaven/view/Home/DailyEvent.dart';
+import 'package:healthy_heaven/view/Home/WaterIntakePanel2.dart';
 import 'package:healthy_heaven/view/Home/home.dart';
 import 'package:healthy_heaven/view/authentication/LoginScreen.dart';
 import 'package:healthy_heaven/view/authentication/SplashScreen.dart';
@@ -26,20 +27,19 @@ class MyApp extends StatelessWidget {
       builder: (_, child) {
         return MultiProvider(
           providers: [
-            
             ChangeNotifierProvider(create: (_) => NavbarController()),
             ChangeNotifierProvider(create: (_) => NutritionViewModel()),
-            
-          ],child: 
-        MaterialApp(
-          debugShowCheckedModeBanner: false,
+          ],
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
 
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-            textTheme: GoogleFonts.nunitoTextTheme(),
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+              textTheme: GoogleFonts.nunitoTextTheme(),
+            ),
+            home: LoginScreen(),
           ),
-          home: LoginScreen(),
-         ) );
+        );
       },
     );
   }
