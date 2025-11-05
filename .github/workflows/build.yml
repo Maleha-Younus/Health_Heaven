@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     name: Build and Analyze with SonarCloud
-    runs-on: ubuntu-latest   # ✅ Linux avoids .exe error
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -23,7 +23,6 @@ jobs:
           distribution: 'temurin'
           java-version: 17
 
-      # ✅ Set up Flutter (includes Dart >= 3.8)
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -33,7 +32,7 @@ jobs:
         run: flutter pub get
 
       - name: Run tests
-        run: flutter test || true  # ✅ prevent fail if tests fail
+        run: flutter test || true
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
@@ -46,7 +45,7 @@ jobs:
             -Dsonar.exclusions=**/build/**,**/*.g.dart,**/ios/**,**/android/**,**/linux/**,**/macos/**,**/windows/**
             -Dsonar.sourceEncoding=UTF-8
             -Dsonar.dart.skip=true
-            -Dsonar.dart.enabled=false   # ✅ Fully disables Dart plugin
+            -Dsonar.dart.enabled=false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
