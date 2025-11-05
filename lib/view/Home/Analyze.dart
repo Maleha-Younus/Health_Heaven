@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthy_heaven/view/Home/notification.dart';
-import 'package:healthy_heaven/view_model/nutrition_viewmodel.dart';
+import 'package:healthy_heaven/model/nutrition_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 class MealScreen extends StatefulWidget {
@@ -48,7 +48,7 @@ class _MealScreenState extends State<MealScreen> {
         key: _key,
         backgroundColor: const Color(0xffF9F6FF),
         appBar: AppBar(
-          title: Text("Meal Nutrition", style: TextStyle(color: Colors.white)),
+          title: Text("Meal Analyzer", style: TextStyle(color: Colors.white)),
           backgroundColor: const Color(0xff74A73D),
           elevation: 0,
           centerTitle: true,

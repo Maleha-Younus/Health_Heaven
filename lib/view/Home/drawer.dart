@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy_heaven/view/Home/Settings.dart';
 import 'package:healthy_heaven/view/Home/ShareAppBottomsheet.dart';
+import 'package:healthy_heaven/view/authentication/LoginScreen.dart';
 import 'package:healthy_heaven/view/widgets/bottom_navbar.dart';
 
 class DrawerScreen extends StatelessWidget {
@@ -106,26 +107,34 @@ class DrawerScreen extends StatelessWidget {
             // 🔹 Logout Button
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  color: const Color(0xff46BA40),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(Icons.logout, color: Colors.white),
-                    SizedBox(width: 8),
-                    Text(
-                      "Logout",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => LoginScreen()),
+                  );
+                },
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: const Color(0xff46BA40),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(Icons.logout, color: Colors.white),
+                      SizedBox(width: 8),
+                      Text(
+                        "Logout",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

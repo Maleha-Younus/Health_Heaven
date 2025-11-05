@@ -23,6 +23,7 @@ class _SignUpScreenState extends State<WaterIntake> {
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(0, 231, 228, 228),
           elevation: 0,
+          
           iconTheme: const IconThemeData(
             color: Colors.white, // 👈 Back button color set to white
           ),

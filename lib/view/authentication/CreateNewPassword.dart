@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:healthy_heaven/view/Home/WaterIntake.dart';
 import 'package:healthy_heaven/view/authentication/OTPScreen.dart';
 import 'package:healthy_heaven/view/authentication/SignupScreen.dart';
+import 'package:healthy_heaven/view/authentication/createProfile.dart';
 import 'package:healthy_heaven/view/widgets/Ui_Button.dart';
 import 'package:healthy_heaven/view/widgets/custom_textfields.dart';
 
@@ -128,7 +129,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => WaterIntake(),
+                                    builder: (context) => CreateProfile(),
                                   ),
                                 );
                               },

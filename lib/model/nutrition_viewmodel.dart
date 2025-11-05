@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:healthy_heaven/view_model/api_services.dart';
+import 'package:healthy_heaven/Controller/api_services.dart';
 
 class NutritionViewModel extends ChangeNotifier {
   final NutritionApiService _apiService = NutritionApiService();

@@ -71,7 +71,8 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {  // Add this for AnimationController
+    with SingleTickerProviderStateMixin {
+  // Add this for AnimationController
 
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
@@ -80,30 +81,28 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
-    
+
     // Initialize animation controller (duration: 1.5 seconds)
     _animationController = AnimationController(
-      duration: const Duration(milliseconds: 1500),
+      duration: const Duration(milliseconds: 1700),
       vsync: this,
     );
 
     // Fade animation (0 to 1 opacity)
-    _fadeAnimation = Tween<double>(
-      begin: 0.0,
-      end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeInOut,  // Smooth easing
-    ));
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut, // Smooth easing
+      ),
+    );
 
     // Scale animation (0.8 to 1.0 size)
-    _scaleAnimation = Tween<double>(
-      begin: 0.8,
-      end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.elasticOut,  // Bouncy scale effect
-    ));
+    _scaleAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.elasticOut, // Bouncy scale effect
+      ),
+    );
 
     // Start the animation immediately
     _animationController.forward();
@@ -119,7 +118,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   void dispose() {
-    _animationController.dispose();  // Clean up
+    _animationController.dispose(); // Clean up
     super.dispose();
   }
 
@@ -135,10 +134,7 @@ class _SplashScreenState extends State<SplashScreen>
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Color(0xff74A73D),
-              Color(0xffACE1AF),
-            ],
+            colors: [Color(0xff74A73D), Color(0xffACE1AF)],
           ),
         ),
         child: Column(

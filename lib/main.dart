@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:healthy_heaven/view/Home/DailyEvent.dart';
+
 import 'package:healthy_heaven/view/Home/WaterIntakePanel2.dart';
 import 'package:healthy_heaven/view/Home/home.dart';
 import 'package:healthy_heaven/view/authentication/LoginScreen.dart';
 import 'package:healthy_heaven/view/authentication/SplashScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healthy_heaven/view_model/Nav_barController.dart';
-import 'package:healthy_heaven/view_model/nutrition_viewmodel.dart';
+import 'package:healthy_heaven/Controller/Nav_barController.dart';
+import 'package:healthy_heaven/model/nutrition_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blue,
               textTheme: GoogleFonts.nunitoTextTheme(),
             ),
-            home: LoginScreen(),
+            home: SplashScreen(),
           ),
         );
       },

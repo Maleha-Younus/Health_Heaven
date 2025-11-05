@@ -28,12 +28,7 @@ class _SignUpScreenState extends State<WaterIntakePanel2> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) =>
-                    const LoginScreen(), // replace with your screen
-              ),
-            );
+            Navigator.pop(context);
           },
         ),
       ),

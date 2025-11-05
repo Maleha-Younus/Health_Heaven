@@ -1,88 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healthy_heaven/view/Home/notification.dart';
-import 'package:healthy_heaven/view/widgets/Ui_Button.dart';
-import 'package:healthy_heaven/view/widgets/bottom_navbar.dart';
-import 'package:healthy_heaven/view/widgets/dropdown.dart';
-import 'package:healthy_heaven/view/widgets/profile_textfield.dart';
+import 'package:healthy_heaven/view/authentication/createProfile.dart';
 
-class MyProfile extends StatefulWidget {
-  const MyProfile({super.key});
-
-  @override
-  State<MyProfile> createState() => _MyProfileState();
-}
-
-class _MyProfileState extends State<MyProfile> {
-  String? selectedGender;
-  String? selectedActivity;
-  String? selectedGoal;
-  String? selectedDiet;
-  String? selectedAllergy;
-  String? selectedHeightUnit;
-  String? selectedWeightUnit;
-
-  final List<String> genders = ['Male', 'Female', 'Other'];
-  final List<String> activities = [
-    'Sedentary',
-    'Lightly Active',
-    'Active',
-    'Very Active',
-  ];
-  final List<String> goals = ['Lose Weight', 'Maintain Weight', 'Gain Muscle'];
-  final List<String> diets = [
-    'Vegetarian',
-    'Non-Vegetarian',
-    'Vegan',
-    'Keto',
-    'Other',
-  ];
-  final List<String> allergies = [
-    'None',
-    'Nuts',
-    'Dairy',
-    'Gluten',
-    'Seafood',
-    'Other',
-  ];
-  final List<String> heightUnits = ['cm', 'ft/in'];
-  final List<String> weightUnits = ['kg', 'lbs'];
-
-  final GlobalKey<ScaffoldState> _key = GlobalKey();
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xff74A73D),
-      key: _key,
+    final userProfile = {
+      "name": "John Marie",
+      "email": "John@gmail.com",
+      "age": "25",
+      "gender": "male",
+      "height": "165 cm",
+      "weight": "60 kg",
+      "activity": "Lightly Active",
+      "goal": "Maintain Weight",
+      "diet": "Vegetarian",
+      "allergy": "None",
+      "description":
+          "Dedicated to maintaining a healthy lifestyle with balanced nutrition and regular activity.",
+    };
 
+    return Scaffold(
+      backgroundColor: const Color(0xffFAFAFA),
       appBar: AppBar(
-        title: Text("My Profile", style: TextStyle(color: Colors.white)),
         backgroundColor: const Color(0xff74A73D),
-        elevation: 0,
-        centerTitle: true,
+        automaticallyImplyLeading: false,
         leading: IconButton(
-          icon: const Icon(
-            Icons.menu,
-            color: Colors.white,
-          ), // 👈 Menu icon white
-          onPressed: () {
-            Scaffold.of(context).openDrawer();
-          },
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pop(context),
+        ),
+        centerTitle: true,
+        title: const Text(
+          "Profile",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         actions: [
           IconButton(
-            icon: const Icon(
-              Icons.notifications,
-              color: Colors.white,
-            ), // 👈 Notification icon white
+            icon: const Icon(Icons.edit, color: Colors.white),
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => const NotificationScreen(),
-                ),
+                MaterialPageRoute(builder: (context) => const CreateProfile()),
               );
             },
           ),
@@ -90,146 +51,103 @@ class _MyProfileState extends State<MyProfile> {
       ),
       body: Column(
         children: [
-          10.verticalSpace,
-          Expanded(
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 25.h),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30.r),
-                  topRight: Radius.circular(30.r),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
-                    blurRadius: 10,
-                    offset: const Offset(0, -2),
+          Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Container(height: 90.h, color: const Color(0xff74A73D)),
+              Positioned(
+                top: 20.h,
+                left: 0,
+                right: 0,
+                child: Center(
+                  child: Container(
+                    width: 120.w,
+                    height: 120.w,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: const Color(0xff74A73D),
+                        width: 4.0,
+                      ),
+                    ),
+                    child: ClipOval(
+                      child: Image.asset(
+                        "assets/images/Ellipse 79.png",
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                ],
-              ),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    _buildSectionTitle("Personal Information"),
-                    10.verticalSpace,
-                    const AppTextField(hintText: "Full Name"),
-                    16.verticalSpace,
-                    const AppTextField(
-                      hintText: "Email Address",
-                      keyboardType: TextInputType.emailAddress,
-                    ),
-                    16.verticalSpace,
-                    const AppTextField(
-                      hintText: "Age",
-                      keyboardType: TextInputType.number,
-                    ),
-                    16.verticalSpace,
-                    CustomDropdownField(
-                      hint: "Select Gender",
-                      items: genders,
-                      selectedValue: selectedGender,
-                      onChanged: (val) => setState(() => selectedGender = val),
-                    ),
-                    25.verticalSpace,
-
-                    _buildSectionTitle("Physical Details"),
-                    10.verticalSpace,
-                    Row(
-                      children: [
-                        Expanded(
-                          child: AppTextField(
-                            hintText: "Height",
-                            keyboardType: TextInputType.number,
-                          ),
-                        ),
-                        SizedBox(width: 12.w),
-                        Expanded(
-                          child: CustomDropdownField(
-                            hint: "Unit",
-                            items: heightUnits,
-                            selectedValue: selectedHeightUnit,
-                            onChanged: (val) =>
-                                setState(() => selectedHeightUnit = val),
-                          ),
-                        ),
-                      ],
-                    ),
-                    16.verticalSpace,
-                    Row(
-                      children: [
-                        Expanded(
-                          child: AppTextField(
-                            hintText: "Weight",
-                            keyboardType: TextInputType.number,
-                          ),
-                        ),
-                        SizedBox(width: 12.w),
-                        Expanded(
-                          child: CustomDropdownField(
-                            hint: "Unit",
-                            items: weightUnits,
-                            selectedValue: selectedWeightUnit,
-                            onChanged: (val) =>
-                                setState(() => selectedWeightUnit = val),
-                          ),
-                        ),
-                      ],
-                    ),
-                    25.verticalSpace,
-
-                    _buildSectionTitle("Lifestyle Preferences"),
-                    10.verticalSpace,
-                    CustomDropdownField(
-                      hint: "Activity Level",
-                      items: activities,
-                      selectedValue: selectedActivity,
-                      onChanged: (val) =>
-                          setState(() => selectedActivity = val),
-                    ),
-                    16.verticalSpace,
-                    CustomDropdownField(
-                      hint: "Health Goal",
-                      items: goals,
-                      selectedValue: selectedGoal,
-                      onChanged: (val) => setState(() => selectedGoal = val),
-                    ),
-                    16.verticalSpace,
-                    CustomDropdownField(
-                      hint: "Diet Preference",
-                      items: diets,
-                      selectedValue: selectedDiet,
-                      onChanged: (val) => setState(() => selectedDiet = val),
-                    ),
-                    16.verticalSpace,
-                    CustomDropdownField(
-                      hint: "Allergies (if any)",
-                      items: allergies,
-                      selectedValue: selectedAllergy,
-                      onChanged: (val) => setState(() => selectedAllergy = val),
-                    ),
-                    35.verticalSpace,
-
-                    Ui_Button(
-                      text: "SAVE PROFILE",
-                      tap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text("Profile saved successfully!"),
-                          ),
-                        );
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => const NavBarScreen(initialIndex: 0),
-                          ),
-                        );
-                      },
-                    ),
-                    15.verticalSpace,
-                  ],
                 ),
+              ),
+            ],
+          ),
+          60.verticalSpace,
+          Text(
+            userProfile["name"]!,
+            style: GoogleFonts.poppins(
+              fontSize: 20.sp,
+              color: const Color(0xff74A73D),
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          5.verticalSpace,
+          Text(
+            userProfile["email"]!,
+            style: TextStyle(fontSize: 15.sp, color: Colors.grey[700]),
+          ),
+          25.verticalSpace,
+
+          // Info Section
+          Expanded(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _sectionTitle("Personal Information"),
+                  _infoTile(Icons.cake, "Age", userProfile["age"]!),
+                  _infoTile(Icons.person, "Gender", userProfile["gender"]!),
+                  15.verticalSpace,
+                  _sectionTitle("Physical Details"),
+                  _infoTile(Icons.height, "Height", userProfile["height"]!),
+                  _infoTile(
+                    Icons.monitor_weight,
+                    "Weight",
+                    userProfile["weight"]!,
+                  ),
+                  15.verticalSpace,
+                  _sectionTitle("Lifestyle Preferences"),
+                  _infoTile(
+                    Icons.fitness_center,
+                    "Activity Level",
+                    userProfile["activity"]!,
+                  ),
+                  _infoTile(Icons.flag, "Goal", userProfile["goal"]!),
+                  _infoTile(Icons.restaurant, "Diet", userProfile["diet"]!),
+                  _infoTile(
+                    Icons.warning_amber_rounded,
+                    "Allergies",
+                    userProfile["allergy"]!,
+                  ),
+                  15.verticalSpace,
+                  _sectionTitle("Description"),
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.all(12.w),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(10.r),
+                    ),
+                    child: Text(
+                      userProfile["description"]!,
+                      style: TextStyle(
+                        fontSize: 15.sp,
+                        color: Colors.grey[800],
+                      ),
+                    ),
+                  ),
+                  20.verticalSpace,
+                ],
               ),
             ),
           ),
@@ -238,14 +156,29 @@ class _MyProfileState extends State<MyProfile> {
     );
   }
 
-  Widget _buildSectionTitle(String title) {
-    return Align(
-      alignment: Alignment.centerLeft,
+  Widget _infoTile(IconData icon, String label, String value) {
+    return ListTile(
+      contentPadding: EdgeInsets.zero,
+      leading: Icon(icon, color: const Color(0xff74A73D)),
+      title: Text(
+        label,
+        style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
+      ),
+      trailing: Text(
+        value,
+        style: TextStyle(fontSize: 15.sp, color: Colors.grey[700]),
+      ),
+    );
+  }
+
+  Widget _sectionTitle(String title) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 8.h, top: 10.h),
       child: Text(
         title,
         style: GoogleFonts.ubuntu(
-          fontSize: 16.sp,
-          fontWeight: FontWeight.w500,
+          fontSize: 17.sp,
+          fontWeight: FontWeight.w600,
           color: const Color(0xff333333),
         ),
       ),

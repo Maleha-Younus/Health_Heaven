@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:healthy_heaven/view/Home/Analyze.dart';
+
 import 'package:healthy_heaven/view/Home/drawer.dart';
 import 'package:healthy_heaven/view/Home/home.dart';
 import 'package:healthy_heaven/view/Home/myProfile.dart';
-import 'package:healthy_heaven/view_model/Nav_barController.dart';
+import 'package:healthy_heaven/Controller/Nav_barController.dart';
 import 'package:provider/provider.dart';
 
 class NavBarScreen extends StatefulWidget {
@@ -61,7 +62,7 @@ class _NavBarScreenState extends State<NavBarScreen> {
               ),
             ],
           ),
-          padding: EdgeInsets.symmetric(vertical: 5.h),
+          padding: EdgeInsets.symmetric(vertical: 8.h),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: navItems
@@ -83,7 +84,7 @@ class _NavBarScreenState extends State<NavBarScreen> {
         return const MealScreen();
 
       case 2:
-        return const MyProfile();
+        return const ProfileScreen();
       default:
         return const HomeScreen();
     }

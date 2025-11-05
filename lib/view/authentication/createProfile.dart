@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:healthy_heaven/view/widgets/Ui_Button.dart';
 import 'package:healthy_heaven/view/widgets/bottom_navbar.dart';
 import 'package:healthy_heaven/view/widgets/dropdown.dart';
+import 'package:healthy_heaven/view/widgets/profile_image.dart';
 import 'package:healthy_heaven/view/widgets/profile_textfield.dart';
 
 class CreateProfile extends StatefulWidget {
@@ -89,6 +90,9 @@ class _CreateProfileState extends State<CreateProfile> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
+                    10.verticalSpace,
+                    ProfileImage(),
+                    30.verticalSpace,
                     _buildSectionTitle("Personal Information"),
                     10.verticalSpace,
                     const AppTextField(hintText: "Full Name"),

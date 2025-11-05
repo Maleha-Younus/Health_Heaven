@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthy_heaven/view/Home/Meditation.dart';
 import 'package:healthy_heaven/view/Home/WaterIntake.dart';
 import 'package:healthy_heaven/view/Home/WaterIntakePanel2.dart';
 import 'package:healthy_heaven/view/Home/notification.dart';
@@ -55,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
               IconButton(
                 icon: const Icon(Icons.menu, color: Colors.white),
                 onPressed: () {
-                  _key.currentState?.openDrawer();
+                  Scaffold.of(context).openDrawer();
                 },
               ),
               IconButton(
@@ -248,7 +249,7 @@ class HomeContainer extends StatelessWidget {
               if (title == "Water Intake") {
                 return const WaterIntake();
               } else {
-                return const WaterIntakePanel2();
+                return const MeditationScreen();
               }
             },
           ),
