@@ -45,8 +45,10 @@ jobs:
             -Dsonar.exclusions=**/build/**,**/*.g.dart,**/ios/**,**/android/**,**/linux/**,**/macos/**,**/windows/**
             -Dsonar.sourceEncoding=UTF-8
             -Dsonar.language=js
-            -Dsonar.dart.enabled=false
+            -Dsonar.scanner.force-deprecated-dart-skip=true
+            -Dsonar.dart.skip=true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
 
