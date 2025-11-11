@@ -51,7 +51,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
         backgroundColor: const Color.fromARGB(0, 231, 228, 228),
         elevation: 0,
         iconTheme: const IconThemeData(
-          color: Colors.white, // 👈 Back button color set to white
+          color: Colors.white, // Back button color set to white
         ),
       ),
       body: Padding(

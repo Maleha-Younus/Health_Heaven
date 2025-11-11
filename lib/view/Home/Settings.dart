@@ -33,7 +33,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           icon: const Icon(
             Icons.menu,
             color: Colors.white,
-          ), // 👈 Menu icon white
+          ), //  Menu icon white
           onPressed: () {
             _key.currentState?.openDrawer();
           },
@@ -43,7 +43,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             icon: const Icon(
               Icons.notifications,
               color: Colors.white,
-            ), // 👈 Notification icon white
+            ), //  Notification icon white
             onPressed: () {
               Navigator.push(
                 context,

@@ -105,7 +105,7 @@ class _NavBarScreenState extends State<NavBarScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // ✅ Green Circle with Icon
+            //  Green Circle with Icon
             Container(
               width: 45.w,
               height: 45.h,
@@ -125,7 +125,7 @@ class _NavBarScreenState extends State<NavBarScreen> {
               ),
             ),
             5.verticalSpace,
-            // ✅ Label Text
+            //  Label Text
             Text(
               navItem.label,
               style: TextStyle(

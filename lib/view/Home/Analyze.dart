@@ -56,7 +56,7 @@ class _MealScreenState extends State<MealScreen> {
             icon: const Icon(
               Icons.menu,
               color: Colors.white,
-            ), // 👈 Menu icon white
+            ), //  Menu icon white
             onPressed: () {
               Scaffold.of(context).openDrawer();
             },
@@ -66,7 +66,7 @@ class _MealScreenState extends State<MealScreen> {
               icon: const Icon(
                 Icons.notifications,
                 color: Colors.white,
-              ), // 👈 Notification icon white
+              ), //  Notification icon white
               onPressed: () {
                 Navigator.push(
                   context,

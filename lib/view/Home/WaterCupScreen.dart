@@ -1,33 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healthy_heaven/view/authentication/LoginScreen.dart';
+import 'package:healthy_heaven/Controller/Water_provider.dart';
+import 'package:provider/provider.dart';
 
-class WaterCupsScreen extends StatefulWidget {
+class WaterCupsScreen extends StatelessWidget {
   const WaterCupsScreen({super.key});
 
   @override
-  State<WaterCupsScreen> createState() => _WaterCupsScreenState();
-}
-
-class _WaterCupsScreenState extends State<WaterCupsScreen> {
-  final int totalCups = 20;
-  int filledCups = 3; // initially 3 filled cups
-
-  @override
   Widget build(BuildContext context) {
+    final waterProvider = Provider.of<WaterProvider>(context);
+    final int totalCups = 20;
+    int filledCups = waterProvider.filledCups;
+
     return Scaffold(
       backgroundColor: const Color(0xff74A73D),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
-        automaticallyImplyLeading: false,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: Padding(
@@ -35,7 +29,6 @@ class _WaterCupsScreenState extends State<WaterCupsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Title text
             Padding(
               padding: EdgeInsets.only(left: 8.w),
               child: Text(
@@ -48,8 +41,6 @@ class _WaterCupsScreenState extends State<WaterCupsScreen> {
               ),
             ),
             20.verticalSpace,
-
-            // White card section
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
@@ -91,8 +82,6 @@ class _WaterCupsScreenState extends State<WaterCupsScreen> {
                         ),
                       ),
                       20.verticalSpace,
-
-                      // Grid of cups (drops)
                       Expanded(
                         child: GridView.builder(
                           padding: EdgeInsets.only(top: 10.h),
@@ -108,14 +97,8 @@ class _WaterCupsScreenState extends State<WaterCupsScreen> {
                             bool isFilled = index < filledCups;
                             return GestureDetector(
                               onTap: () {
-                                setState(() {
-                                  if (isFilled) {
-                                    filledCups = index; // unfill
-                                  } else {
-                                    filledCups =
-                                        index + 1; // fill up to this cup
-                                  }
-                                });
+                                int newCups = isFilled ? index : index + 1;
+                                waterProvider.setCups(newCups);
                               },
                               child: Column(
                                 children: [

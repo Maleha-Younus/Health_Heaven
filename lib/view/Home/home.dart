@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthy_heaven/Controller/Water_provider.dart';
 import 'package:healthy_heaven/view/Home/Meditation.dart';
 import 'package:healthy_heaven/view/Home/WaterIntake.dart';
 import 'package:healthy_heaven/view/Home/WaterIntakePanel2.dart';
 import 'package:healthy_heaven/view/Home/notification.dart';
 import 'package:healthy_heaven/view/widgets/reusable_homecard.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -130,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         25.verticalSpace,
 
-                        /// ✅ Two containers in a row
+                        ///  Two containers in a row
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -152,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         30.verticalSpace,
 
-                        /// ✅ 🟩 Animated Daily Progress Section
+                        ///  Animated Daily Progress Section
                         Text(
                           "Your Daily Progress",
                           style: GoogleFonts.nunito(
@@ -161,37 +163,45 @@ class _HomeScreenState extends State<HomeScreen> {
                             color: Colors.black87,
                           ),
                         ),
-                        10.verticalSpace,
-                        CircularPercentIndicator(
-                          radius: 70.w, // size of circle
-                          lineWidth: 8.w, // thickness
-                          percent: 0.65, // 65% example
-                          animation: true,
-                          animationDuration: 1200,
-                          center: Text(
-                            "65%",
-                            style: GoogleFonts.nunito(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87,
-                            ),
-                          ),
-                          progressColor: const Color(0xff6AA817),
-                          backgroundColor: Colors.grey.shade300,
-                          circularStrokeCap: CircularStrokeCap.round,
-                        ),
-                        10.verticalSpace,
-                        Text(
-                          "You’re 65% closer to your daily goals 🎯",
-                          style: GoogleFonts.nunito(
-                            fontSize: 15.sp,
-                            color: Colors.black54,
-                          ),
-                        ),
+                        Consumer<WaterProvider>(
+  builder: (context, waterProvider, child) {
+    double percent = waterProvider.progress;
+    return Column(
+      children: [
+        CircularPercentIndicator(
+          radius: 70.w,
+          lineWidth: 8.w,
+          percent: percent,
+          animation: true,
+          animationDuration: 1000,
+          center: Text(
+            "${(percent * 100).toInt()}%",
+            style: GoogleFonts.nunito(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          progressColor: const Color(0xff6AA817),
+          backgroundColor: Colors.grey.shade300,
+          circularStrokeCap: CircularStrokeCap.round,
+        ),
+        10.verticalSpace,
+        Text(
+          "You’re ${(percent * 100).toInt()}% closer to your daily goals 🎯",
+          style: GoogleFonts.nunito(
+            fontSize: 15.sp,
+            color: Colors.black54,
+          ),
+        ),
+      ],
+    );
+  },
+),
+
 
                         30.verticalSpace,
 
-                        /// ✅ Premium features section
+                        ///  Premium features section
                         Text(
                           "Try more features in Premium Version...",
                           textAlign: TextAlign.center,
@@ -203,7 +213,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         20.verticalSpace,
 
-                        /// ✅ Horizontal scroll with reusable cards
+                        ///  Horizontal scroll with reusable cards
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(

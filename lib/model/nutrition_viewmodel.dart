@@ -19,7 +19,7 @@ class NutritionViewModel extends ChangeNotifier {
     try {
       final data = await _apiService.fetchNutrition(ingredient);
 
-      // ✅ Simplified — directly assign data
+      //  Simplified — directly assign data
       if (data != null && data.isNotEmpty) {
         nutritionData = data;
       } else {

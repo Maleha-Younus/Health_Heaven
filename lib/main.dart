@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:healthy_heaven/Controller/Water_provider.dart';
 
 import 'package:healthy_heaven/view/Home/WaterIntakePanel2.dart';
 import 'package:healthy_heaven/view/Home/home.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
           providers: [
             ChangeNotifierProvider(create: (_) => NavbarController()),
             ChangeNotifierProvider(create: (_) => NutritionViewModel()),
+            ChangeNotifierProvider(create: (_) => WaterProvider()),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,

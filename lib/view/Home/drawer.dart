@@ -16,7 +16,7 @@ class DrawerScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // 🔹 Space for your logo / user info
+            //  Space for your logo / user info
             const SizedBox(height: 40),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
@@ -33,7 +33,7 @@ class DrawerScreen extends StatelessWidget {
 
             const SizedBox(height: 30),
 
-            // 🔹 Drawer Items List
+            //  Drawer Items List
             Expanded(
               child: ListView(
                 children: [
@@ -104,7 +104,7 @@ class DrawerScreen extends StatelessWidget {
               ),
             ),
 
-            // 🔹 Logout Button
+            //  Logout Button
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: GestureDetector(

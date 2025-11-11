@@ -21,7 +21,7 @@ class AppTextField extends StatelessWidget {
     return TextFormField(
       keyboardType: keyboardType,
       decoration: InputDecoration(
-        // 👇 Better padding for typing comfort
+        //  Better padding for typing comfort
         contentPadding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
 
         hintText: hintText,
@@ -31,13 +31,13 @@ class AppTextField extends StatelessWidget {
           fontWeight: FontWeight.w400,
         ),
 
-        // 👇 Optional icons
+        //  Optional icons
         prefixIcon: icon != null
             ? Icon(icon, color: const Color(0xff570AD4))
             : null,
         suffixIcon: suffix,
 
-        // 👇 Better borders for consistent UI
+        //  Better borders for consistent UI
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.r),
           borderSide: const BorderSide(color: Color(0xffDADADA)),

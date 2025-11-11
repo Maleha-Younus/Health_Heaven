@@ -11,7 +11,7 @@ class AboutApp extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(
-          color: Colors.white, // 👈 Back button color set to white
+          color: Colors.white, //  Back button color set to white
         ),
         backgroundColor: const Color(0xff74A73D),
         title: Text("About App", style: GoogleFonts.ubuntu(color: Colors.white)),
